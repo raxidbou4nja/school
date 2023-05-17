@@ -74,17 +74,16 @@
     </div>
 </div>
 <script type="text/javascript">
-    
+
+const loginBtn = document.getElementById('loginBtn');
 const form = document.querySelector('form');
-form.addEventListener('keyup', function() {
-    
+
+
+
 const email = document.querySelector('#email');
 const emailError = document.querySelector('#emailError');
 
-const password = document.querySelector('#password');
-const passwordError = document.querySelector('#passwordError');
-
-const loginBtn = document.getElementById('loginBtn');
+email.addEventListener('keyup', function() {
 
 if (email.value == '' || email.value.length < 6) {
     emailError.innerHTML = 'Veuillez entrer un email valide';
@@ -94,19 +93,31 @@ if (email.value == '' || email.value.length < 6) {
     loginBtn.disabled = true;
 }
 
-if (password.value == '' || password.value.length < 8) {
-    passwordError.innerHTML = 'Entrez un mot de passe contenant plus de 8 caractères';
-    passwordError.style.display = 'block';
-} else {
-    passwordError.style.display = 'none';
-    loginBtn.disabled = true;
+});
 
-}
+const password = document.querySelector('#password');
+const passwordError = document.querySelector('#passwordError');
 
 
-if (email.value !==  '' && password.value !== '' && password.value.length >= 8) {
-    loginBtn.disabled = false;
-}
+password.addEventListener('keyup', function() {
+
+    if (password.value == '' || password.value.length < 8) {
+        passwordError.innerHTML = 'Entrez un mot de passe contenant plus de 8 caractères';
+        passwordError.style.display = 'block';
+    } else {
+        passwordError.style.display = 'none';
+        loginBtn.disabled = true;
+
+    }
+
+});
+
+
+form.addEventListener('keyup', function() {
+
+    if (email.value !==  '' && password.value !== '' && password.value.length >= 8) {
+        loginBtn.disabled = false;
+    }
 
 
 });

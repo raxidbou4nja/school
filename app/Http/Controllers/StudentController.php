@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\bulletin;
+use App\Bulletin;
 use App\Level;
 use App\Subject;
 use App\Note;
