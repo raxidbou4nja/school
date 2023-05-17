@@ -82,65 +82,89 @@
 <script type="text/javascript">
     
 const form = document.querySelector('form');
+const registerBtn = document.getElementById('registerBtn');
+
 form.addEventListener('keyup', function() {
+
+
+    
+    if (name.value !==  '' && email.value !==  '' && password.value !== '' && password.value.length >= 8 && password.value == passwordConfirm.value) {
+        registerBtn.disabled = false;
+    }
+
+
+});
 
 const name = document.querySelector('#name');
 const nameError = document.querySelector('#nameError');
 
+
+name.addEventListener('keyup', function() {
+
+    if (name.value == '' || name.value.length < 3) 
+    {
+        nameError.innerHTML = 'Veuillez entrer un Nom plus de 3 caractères';
+        nameError.style.display = 'block';
+    }
+    else
+    {
+        nameError.style.display = 'none';
+        registerBtn.disabled = true;
+    }
+
+})
+
+
 const email = document.querySelector('#email');
 const emailError = document.querySelector('#emailError');
+
+email.addEventListener('keyup', function() {
+
+    if (email.value == '' || email.value.length < 6) {
+        emailError.innerHTML = 'Veuillez entrer un email valide';
+        emailError.style.display = 'block';
+    }else{
+        emailError.style.display = 'none';
+        registerBtn.disabled = true;
+    }
+
+})
+
 
 const password = document.querySelector('#password');
 const passwordError = document.querySelector('#passwordError');
 
+password.addEventListener('keyup', function() {
+    if (password.value == '' || password.value.length < 8) {
+        passwordError.innerHTML = 'Entrez un mot de passe contenant plus de 8 caractères';
+        passwordError.style.display = 'block';
+    } else {
+        passwordError.style.display = 'none';
+        registerBtn.disabled = true;
+
+    }
+})
+
+
 const passwordConfirm = document.querySelector('#password-confirm');
 const passwordConfirmError = document.querySelector('#password-confirmError');
 
+passwordConfirm.addEventListener('keyup', function() {
+    if ((password.value != passwordConfirm.value) || passwordConfirm.value.length < 8) 
+    {
+        passwordConfirmError.innerHTML = 'Le mot de passe ne correspond pas';
+        passwordConfirmError.style.display = 'block';
+    } 
+    else 
+    {
+        passwordConfirmError.style.display = 'none';
+        registerBtn.disabled = true;
 
-const registerBtn = document.getElementById('registerBtn');
-
-if (name.value == '' || name.value.length < 3) {
-    nameError.innerHTML = 'Veuillez entrer un Nom plus de 3 caractères';
-    nameError.style.display = 'block';
-}else{
-    nameError.style.display = 'none';
-    registerBtn.disabled = true;
-}
-
-if (email.value == '' || email.value.length < 6) {
-    emailError.innerHTML = 'Veuillez entrer un email valide';
-    emailError.style.display = 'block';
-}else{
-    emailError.style.display = 'none';
-    registerBtn.disabled = true;
-}
-
-if (password.value == '' || password.value.length < 8) {
-    passwordError.innerHTML = 'Entrez un mot de passe contenant plus de 8 caractères';
-    passwordError.style.display = 'block';
-} else {
-    passwordError.style.display = 'none';
-    registerBtn.disabled = true;
-
-}
+    }
+})
 
 
-if ((password.value != passwordConfirm.value) || passwordConfirm.value.length < 8) {
-    passwordConfirmError.innerHTML = 'Le mot de passe ne correspond pas';
-    passwordConfirmError.style.display = 'block';
-} else {
-    passwordConfirmError.style.display = 'none';
-    registerBtn.disabled = true;
 
-}
-
-
-if (name.value !==  '' && email.value !==  '' && password.value !== '' && password.value.length >= 8 && password.value == passwordConfirm.value) {
-    registerBtn.disabled = false;
-}
-
-
-});
 
 </script>
 @endsection
