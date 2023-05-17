@@ -84,17 +84,6 @@
 const form = document.querySelector('form');
 const registerBtn = document.getElementById('registerBtn');
 
-form.addEventListener('keyup', function() {
-
-
-    
-    if (name.value !==  '' && email.value !==  '' && password.value !== '' && password.value.length >= 8 && password.value == passwordConfirm.value) {
-        registerBtn.disabled = false;
-    }
-
-
-});
-
 const name = document.querySelector('#name');
 const nameError = document.querySelector('#nameError');
 
@@ -165,6 +154,17 @@ passwordConfirm.addEventListener('keyup', function() {
 
 
 
+
+form.addEventListener('keyup', function() {
+
+
+    
+    if (name.value !==  '' && email.value !==  '' && password.value !== '' && password.value.length >= 8 && password.value == passwordConfirm.value) {
+        registerBtn.disabled = false;
+    }
+
+
+});
 
 </script>
 @endsection
